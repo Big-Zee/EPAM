@@ -8,7 +8,7 @@ import * as serviceWorker from "./serviceWorker";
 // const title = React.createElement('h3', {}, 'My First React Code - H3');
 // const title2 = React.createElement('h2', {}, 'My First React Code - H2');
 
-const title = React.createElement("h1", { key: 1 }, "Some element in H1");
+const title = React.createElement("h1", { key: 1 }, "Hello World!");
 const paragraph = React.createElement("p", { key: 2 }, "Paragraph in webpage");
 
 const GreetingElement = <Greeting name="Zbig!" key={3} />;
