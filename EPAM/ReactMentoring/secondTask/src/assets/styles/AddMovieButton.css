@@ -1,0 +1,25 @@
+/*From: https://www.bestcssbuttongenerator.com/#/17*/
+
+button.addMovieButton {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  background-color: transparent;
+  background-color: #424242;
+  border-radius: 9px;
+  border: 1px solid #d6bcd6;
+  display: inline-block;
+  cursor: pointer;  
+  color: #F65261;
+  font-family: Arial;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 11px 25px;
+  text-decoration: none;
+  text-shadow: 0px 1px 8px #e1e2ed;
+  z-index: 3;
+}
+
+button.addMovieButton:hover {
+  background-color: transparent;
+}

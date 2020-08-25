@@ -1,0 +1,50 @@
+.MovieCard {
+  color: red;
+  display: inline-block;
+  width: 450px;
+  height: 550px;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+h3 {
+  display: block;
+  color: #ffffff;
+  font-size: 20px;
+  margin-left: 30px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+h4 {
+  border: 2px solid #555555;
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  width: 70px;
+  margin-top: -75px;
+  margin-left: 340px;
+  color: white;
+  border-radius: 6px;
+}
+
+p {
+  display: block;
+  font-size: 1em;
+  color: #555555;
+  margin-left: 30px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+img {
+  display: block;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 380px;
+  height: 410px;
+}

@@ -1,5 +1,9 @@
 $myColor: red;
+$marginTopAndBottom: 0px;
 
-h1 {
+h2 {
   color: $myColor;
+  margin-top: $marginTopAndBottom;
+  padding-top: $marginTopAndBottom;
 }
+

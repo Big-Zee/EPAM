@@ -1,9 +1,29 @@
-import * as React from "react";
+import * as React from 'react';
 
-import '../../styles/styles.scss';
+import MovieList from './MovieList/MovieList'
 
-export interface IAppProps {}
+import Header from './Header/Header'
 
-export default function IApp(props: IAppProps) {
-  return <h1>Hello React Typescript!</h1>;
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+
+import GenerateResultsContainer from './MoviesListContainer/ResultsContainer'
+//I was playing with different styles approach
+import '../../../assets/styles/Styles.scss';
+import '../../../assets/styles/App.css';
+
+import WithLoading from '../components/WithLoading/WithLoading'
+
+const MoviesWithLoading = WithLoading(MovieList);
+
+export default function App() {
+  return (
+    <>
+    <Header />
+    <GenerateResultsContainer>
+    <ErrorBoundary>
+    <MoviesWithLoading isLoading={false}/>    
+    </ErrorBoundary>
+    </GenerateResultsContainer>
+  </>
+  )
 }
