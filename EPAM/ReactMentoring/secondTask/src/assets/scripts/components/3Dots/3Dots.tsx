@@ -1,20 +1,30 @@
 import * as React from "react";
+import { useState } from "react";
 
 import "../../../styles/ThreeDotsStyles.css";
 
 import ThreeDotsImage from "../../../images/3dots.png";
 
+import EditDeletePopup from "../EditDeletePopup/EditDeletePopup";
+
 export default function Generate3DotsOnHover(props: any) {
-  const imageClick = () => {
-    console.log("Click 3 Dots");
-  };
+  var [showModal, setModal] = useState(false);
+
+  function imageClick() {
+    console.log("3Dots Click");
+    showModal = !showModal;
+  }
+
   const ThreeDots = () => (
-    <img
-      className="ThreeDot"
-      src={ThreeDotsImage}
-      onClick={() => imageClick()}
-    />
+    <>
+      <div onClick={imageClick}><img onClick={imageClick} className="ThreeDot" src={ThreeDotsImage} /></div>
+    </>
   );
 
-  return <>{<ThreeDots />}</>;
+  return (
+    <>
+      {<ThreeDots />}
+      {showModal && <EditDeletePopup></EditDeletePopup>}
+    </>
+  );
 }

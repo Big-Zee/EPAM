@@ -6,4 +6,6 @@ img.ThreeDot {
     text-align: left;
     margin-left: 370px;
     margin-bottom: -50px;
+    z-index: 10 !important;
+    
 }

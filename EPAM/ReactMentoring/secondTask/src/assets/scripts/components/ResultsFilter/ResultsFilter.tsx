@@ -6,70 +6,65 @@ interface ISearchState {
   searchMethod: string;
 }
 
+let genres: { type: string; Id: number }[] = [
+  { type: "All", Id: 0 },
+  { type: "Documentary", Id: 1 },
+  { type: "Comedy", Id: 2 },
+  { type: "Horror", Id: 3 },
+  { type: "Crime", Id: 4 },
+];
+
 export default class CreateResultsFilter extends React.Component<
   {},
   ISearchState
 > {
   constructor(props: any) {
     super(props);
-    this.handleClickAll = this.handleClickAll.bind(this);
+    this.handleGenreFilter = this.handleGenreFilter.bind(this);
     this.state = {
       searchMethod: "Release Date",
     };
-  }
+  }  
 
   setSearchByName = () => {
     this.setState({ searchMethod: "Name" });
   };
   setSearchByReleaseDate = () => {
-    this.setState({ searchMethod: "Release Date" });    
+    this.setState({ searchMethod: "Release Date" });
   };
 
-  handleClickAll(event: any) {
-    alert("Clicked All");
-    event.preventDefault();
+  handleGenreFilter(genre: string) {
+    if (genre === "All") {
+      alert("Clicked All");
+    } else if (genre === "Documentary") {
+      alert("Clicked Documentary");
+    } else if (genre === "Comedy") {
+      alert("Clicked Comedy");
+    } else if (genre === "Horror") {
+      alert("Clicked Horror");
+    } else if (genre === "Crime") {
+      alert("Clicked Crime");
+    }
   }
 
-  handleClickDocumentary(event: any) {
-    alert("Clicked Documentary");
-    event.preventDefault();
-  }
-
-  handleClickComedyy(event: any) {
-    alert("Clicked Comedy");
-    event.preventDefault();
-  }
-
-  handleClickHorror(event: any) {
-    alert("Clicked Horror");
-    event.preventDefault();
-  }
-
-  handleClickCrime(event: any) {
-    alert("Clicked Crime");
-    event.preventDefault();
+  handleClickSort() {
+    alert("Sort Clicked");
   }
 
   render() {
     return (
       <>
         <div className="ResultsFilter">
-          <button className="link" onClick={this.handleClickAll}>
-            All
-          </button>
-          <button className="link" onClick={this.handleClickDocumentary}>
-            Documentary
-          </button>
-          <button className="link" onClick={this.handleClickComedyy}>
-            Comedy
-          </button>
-          <button className="link" onClick={this.handleClickHorror}>
-            Horror
-          </button>
-          <button className="link" onClick={this.handleClickCrime}>
-            Crime
-          </button>
-          <p className="linkRight" onClick={this.handleClickCrime}>
+          {genres.map((genre) => (
+            <button
+              className="link"
+              onClick={() => this.handleGenreFilter(genre.type)}
+              key={genre.Id}
+            >
+              {genre.type}
+            </button>
+          ))}
+          <p className="linkRight" onClick={this.handleClickSort}>
             Sort By
           </p>
           <div className="dropdown">
