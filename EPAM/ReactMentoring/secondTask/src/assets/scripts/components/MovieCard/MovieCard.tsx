@@ -43,7 +43,7 @@ export default class MovieCard extends React.Component<IProps, IHover> {
   }
 
   handleMouseLeave() {
-    console.log("handle mouve leave!");
+    console.log("Handle mouse leave!");
     this.setState(this.switOffchisHovering);
     this.setState(this.switchOffShowModal);
 }
@@ -103,7 +103,7 @@ export default class MovieCard extends React.Component<IProps, IHover> {
           <>
           {this.state.isHovering && <ThreeDots  onClick={self.imageClick}/>}
           </>
-          {this.state.showModal && <EditDeletePopup />}
+          {/*this.state.showModal && <EditDeletePopup />*/}
           <h3>{this.props.title || "Default Title"}</h3>
           <p>
             {this.props.description ||

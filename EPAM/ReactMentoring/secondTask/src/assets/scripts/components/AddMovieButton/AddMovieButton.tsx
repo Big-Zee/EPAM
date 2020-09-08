@@ -22,11 +22,6 @@ export default class AddMovieButton extends React.Component<any, any> {
     this.setState({ showModal: false });
   }
 
-  public modalState () {
-    const stateRef = this.state;
-    return stateRef["showModal"];
-  }
-
   render() {
     // This syntax ensures `this` is bound within handleClick
     return (
