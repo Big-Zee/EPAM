@@ -1,6 +1,6 @@
 .MovieCard {
   color: red;
-  display: inline-block;
+  display: inline-grid;
   width: 450px;
   height: 550px;
   text-align: left;
@@ -23,11 +23,12 @@ h4 {
   display: block;
   font-size: 20px;
   text-align: center;
-  width: 70px;
-  margin-top: -75px;
+  width: 70px;  
   margin-left: 340px;
   color: white;
   border-radius: 6px;
+  margin-top: -90px;
+  margin-bottom: 60px;
 }
 
 p {
