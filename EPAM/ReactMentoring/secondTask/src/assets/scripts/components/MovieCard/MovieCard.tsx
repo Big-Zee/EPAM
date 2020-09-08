@@ -6,11 +6,12 @@ import logo from "../../../images/DefaultImage.jpg";
 
 import ThreeDots from "../3Dots/3Dots";
 
-import EditDeletePopup from "../EditDeletePopup/EditDeletePopup";
+import ShowMovieDetails from "../MovieDetailsModal/MovieDetails";
 
 interface IHover {
   isHovering: boolean;
   showModal: boolean;
+  showMovieDetails: boolean;
 }
 
 interface IProps {
@@ -26,65 +27,57 @@ export default class MovieCard extends React.Component<IProps, IHover> {
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
-    this.imageClick = this.imageClick.bind(this);
+    this.toggleShowDetails = this.toggleShowDetails.bind(this);
     this.state = {
       isHovering: false,
       showModal: false,
+      showMovieDetails: false,
     };
   }
 
-  imageClick() {
-    console.log("Clicked! imageClick Inside");    
-    this.setState(this.switchOnShowModal);
-  }
-
   handleMouseOver() {
-      this.setState(this.switOnisHovering);
+    this.setState(this.switOnisHovering);
   }
 
   handleMouseLeave() {
     console.log("Handle mouse leave!");
     this.setState(this.switOffchisHovering);
-    this.setState(this.switchOffShowModal);
-}
-
-  handleMouseOut() {
-    
   }
 
+  handleMouseOut() {}
+
   switOffchisHovering(state: IHover) {
-      return {
-        isHovering: false,
-      }
+    return {
+      isHovering: false,
+    };
   }
 
   switOnisHovering(state: IHover) {
     return {
       isHovering: true,
-    }
-}
-
-  toggleShowModal(state: IHover) {
-    return {
-      showModal: !state.showModal,
     };
   }
 
-  switchOffShowModal(state: IHover) {
+  toggleShowDetails() {
+    console.log("Showing Movie details: " + this.state.showMovieDetails);
+    this.setState({ showMovieDetails: !this.state.showMovieDetails });
+  }
+
+  switchOnShowDetails(state: IHover) {
     return {
-      showModal: false,
-    }
+      showMovieDetails: true,
+    };
+  }
+
+  switchOffshowDetails(state: IHover) {
+    return {
+      showMovieDetails: false,
+    };
   }
 
   switchOnShowModal(state: IHover) {
     return {
       showModal: true,
-    }
-  }
-
-  toggleHoverState(state: IHover) {
-    return {
-      isHovering: !state.isHovering,
     };
   }
 
@@ -96,14 +89,23 @@ export default class MovieCard extends React.Component<IProps, IHover> {
           onMouseOver={this.handleMouseOver}
           onMouseOut={this.handleMouseOut}
           onMouseLeave={this.handleMouseLeave}
-          onClick={this.imageClick}
+          onClick={this.toggleShowDetails}
           className="MovieCard"
         >
-          <img src={this.props.imageSource || logo} width="100" height="50" />
+          <img
+            src={this.props.imageSource || logo}
+            width="100"
+            height="50"
+            onClick={this.toggleShowDetails}
+          />
           <>
-          {this.state.isHovering && <ThreeDots  onClick={self.imageClick}/>}
+            {this.state.isHovering && (
+              <ThreeDots /*onClick={/*self.imageClick} />}*/ />
+            )}
           </>
-          {/*this.state.showModal && <EditDeletePopup />*/}
+          {this.state.showMovieDetails && (
+            <ShowMovieDetails handleClose={this.switchOffshowDetails} />
+          )}
           <h3>{this.props.title || "Default Title"}</h3>
           <p>
             {this.props.description ||
