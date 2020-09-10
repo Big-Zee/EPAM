@@ -19,6 +19,10 @@ interface IProps {
   title: string;
   description: string;
   year: string;
+  key: string;
+  longDescription: string;
+  rating: string;
+  time: number;
 }
 
 export default class MovieCard extends React.Component<IProps, IHover> {
@@ -100,11 +104,11 @@ export default class MovieCard extends React.Component<IProps, IHover> {
           />
           <>
             {this.state.isHovering && (
-              <ThreeDots /*onClick={/*self.imageClick} />}*/ />
+              <ThreeDots />
             )}
           </>
           {this.state.showMovieDetails && (
-            <ShowMovieDetails handleClose={this.switchOffshowDetails} />
+            <ShowMovieDetails handleClose={this.switchOffshowDetails} movieDetails={this.props} />
           )}
           <h3>{this.props.title || "Default Title"}</h3>
           <p>
