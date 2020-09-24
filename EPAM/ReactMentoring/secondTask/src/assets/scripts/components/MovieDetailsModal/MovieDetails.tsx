@@ -4,14 +4,13 @@ import "../../../styles/MovieDetailsModal.css";
 
 import logo from "../../../images/DefaultImage.jpg";
 
-const ShowMovieDetails = (props: { handleClose: any; movieDetails: any }) => {
-  function handleCloseModal() {}
+const ShowMovieDetails = (props: { movieDetails: any }) => {  
 
   return (
     <>
       <div className="popup-box-movie-details">
         <div className="box-movie-details">
-          <span className="close-icon" onClick={handleCloseModal}>
+          <span className="close-icon">
             x
           </span>
         </div>

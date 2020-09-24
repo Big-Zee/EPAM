@@ -108,7 +108,7 @@ export default class MovieCard extends React.Component<IProps, IHover> {
             )}
           </>
           {this.state.showMovieDetails && (
-            <ShowMovieDetails handleClose={this.switchOffshowDetails} movieDetails={this.props} />
+            <ShowMovieDetails movieDetails={this.props} />
           )}
           <h3>{this.props.title || "Default Title"}</h3>
           <p>
