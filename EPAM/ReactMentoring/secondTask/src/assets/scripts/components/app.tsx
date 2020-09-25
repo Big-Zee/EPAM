@@ -13,17 +13,31 @@ import '../../../assets/styles/App.css';
 
 import WithLoading from '../components/WithLoading/WithLoading'
 
+import { Provider } from "react-redux";
+import configureStore from '../store/configureStore';
+
+
+//import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
 const MoviesWithLoading = WithLoading(MovieList);
+
+const store = configureStore();
+
 
 export default function App() {
   return (
     <>
+    <Provider store={store}>
     <Header />
     <GenerateResultsContainer>
     <ErrorBoundary>
     <MoviesWithLoading isLoading={false}/>    
     </ErrorBoundary>
     </GenerateResultsContainer>
+    </Provider>
   </>
   )
 }

@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { useState, useEffect } from 'react';
+
 import MovieCard from "../MovieCard/MovieCard";
 
 let movies = [
@@ -37,6 +39,11 @@ let movies = [
 ];
 
 export default function MovieList(props: any) {
+
+  /*useEffect(() => {    
+    console.log("Use Efect was called!");    
+  });*/
+
   return (
     <>
       {movies.map((movie) => (
