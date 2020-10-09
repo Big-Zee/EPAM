@@ -1,17 +1,17 @@
-export const GET_USERS = "GET_USERS";
-export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
+export const GET_MOVIES_BY_TITLE = "GET_MOVIES_BY_TITLE";
+export const GET_MOVIES_BY_TITLE_SUCCESS = "GET_MOVIES_BY_TITLE_SUCCESS";
 
-export const getUsers = () => {
+export const getMoviesByTitle = () => {
   console.log("Action: get users");
   return {
-    type: GET_USERS
+    type: GET_MOVIES_BY_TITLE
   };
 };
 
-export const getUsersSuccess = users => {
+export const getMoviesByTitleSuccess = users => {
   console.log("Action: get users - SUCCESS");
   return {    
-    type: GET_USERS_SUCCESS,
+    type: GET_MOVIES_BY_TITLE_SUCCESS,
     users
   };
 };

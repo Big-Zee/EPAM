@@ -3,30 +3,31 @@ import * as React from "react";
 import "../../../styles/SearchBox.css";
 
 import { connect } from "react-redux";
-import { getUsers, getUsersSuccess } from "../../actions/action";
+import { getMoviesByTitle, getMoviesByTitleSuccess } from "../../actions/action";
 
 interface IPorps {
   loading: boolean;
-  onLoadUsersClick: any;
-  onLoadUsersComplete: any;
+  onLoadMoviesByTitleClick: any;
+  onSearchMoviesByTitleComplete: any;
   users: any;
+  //movies: any;
 }
 
-export class SearchBox extends React.Component<IPorps, { value: string }> {
+export class SearchBox extends React.Component<IPorps, { titleToSearch: string }> {
   constructor(props: IPorps) {
     super(props);
-    this.state = { value: "" };
+    this.state = { titleToSearch: "" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleLoadUsersClick = this.handleLoadUsersClick.bind(this);
+    //this.handleSearchMoviesByTitleClick = this.handleSearchMoviesByTitleClick.bind(this);
   }
 
-  handleLoadUsersClick(title: any) {
-    this.props.onLoadUsersClick();
+  handleSearchMoviesByTitleClick(title: any) {
+    this.props.onLoadMoviesByTitleClick();
     //this.sleep(2500).then(() => {
       //if (this.state.value) {
-     /*   var address =
+    /*    var address =
           "http://localhost:4000/movies?search=" +
           this.state.value +
           "&searchBy=title";
@@ -34,18 +35,15 @@ export class SearchBox extends React.Component<IPorps, { value: string }> {
         address = 'https://jsonplaceholder.typicode.com/users';*/
         fetch('https://jsonplaceholder.typicode.com/users')
           .then((response) => response.json())
-          .then((json) => this.props.onLoadUsersComplete(json)).then(()=> {this.sleepFor(2000);});
-          
-      //}
-    //});
+          .then((json) => this.props.onSearchMoviesByTitleComplete(json))
   }
 
   handleChange(event: any) {
-    this.setState({ value: event.target.value });
+    this.setState({ titleToSearch: event.target.value });
   }
 
   handleSubmit(event: any) {
-    alert("Movie title was submitted: " + this.state.value);
+    alert("Movie title was submitted: " + this.state.titleToSearch);
   }
 
   sleep(time: number) {
@@ -60,18 +58,18 @@ export class SearchBox extends React.Component<IPorps, { value: string }> {
   render() {
     return (
       <>
-        <form onSubmit={this.handleLoadUsersClick}>
+        <form onSubmit={this.handleSearchMoviesByTitleClick}>
           <input
             className="text"
             type="text"
-            value={this.state.value}
+            value={this.state.titleToSearch}
             onChange={this.handleChange}
             placeholder="What do you want to watch?"
           />
           <button type="submit">Search</button>
         </form>
         {this.props.loading ? <p>loading...</p> : null}
-        {!this.props.loading && this.props.users /*&& this.props.users >0*/ ? (
+        {!this.props.loading && this.props.users ? (
           <ul>
             {this.props.users.map(
               (user: {
@@ -83,7 +81,7 @@ export class SearchBox extends React.Component<IPorps, { value: string }> {
                   <strong>{user.name}</strong> | {user.email}
                 </li>
               )
-            )}
+              )}
           </ul>
         ) : null}
       </>
@@ -91,7 +89,7 @@ export class SearchBox extends React.Component<IPorps, { value: string }> {
   }
 }
 
-const mapStateToProps = (state: { users: any; isLoading: any }) => ({
+const mapStateToProps = (state: { users: any; isLoading: any }) => (console.log("Entered map state to props"),{
   users: state.users,
   loading: state.isLoading,
 });
@@ -100,11 +98,11 @@ const mapDispatchToProps = (
   dispatch: (arg0: { type: string; users?: any }) => void
 ) => {
   return {
-    onLoadUsersClick: () => {
-      dispatch(getUsers());
+    onLoadMoviesByTitleClick: () => {
+      dispatch(getMoviesByTitle());
     },
-    onLoadUsersComplete: (users: any) => {
-      dispatch(getUsersSuccess(users));
+    onSearchMoviesByTitleComplete: (users: any) => {
+      dispatch(getMoviesByTitleSuccess(users));
     },
   };
 };
